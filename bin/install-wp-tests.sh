@@ -31,7 +31,7 @@ if [[ $WP_VERSION == 'nightly' ]]; then
 	WP_TESTS_TAG="trunk"
 	WP_ARCHIVE="https://wordpress.org"
 elif [[ $WP_VERSION == 'latest' ]]; then
-	LATEST_VERSION=$(curl -fsSL "https://wordpress.org" | grep -o '"current":"[^"]*"' | head -n1 | cut -d'"' -f4)
+	LATEST_VERSION=$(curl -fsSL "https://wordpress.org" | grep -o '"current"[[:space:]]*:[[:space:]]*"[^"]*"' | head -n1 | cut -d'"' -f4)
 	WP_TESTS_TAG="tags/$LATEST_VERSION"
 	WP_ARCHIVE="https://wordpress.org"
 else
