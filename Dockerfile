@@ -1,5 +1,8 @@
 FROM wordpress:php8.4-apache
 
+# Configure PHP upload limits for WordPress development.
+COPY docker/php-upload.ini /usr/local/etc/php/conf.d/php-upload.ini
+
 # Install tools required for WordPress development, testing and packaging.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
