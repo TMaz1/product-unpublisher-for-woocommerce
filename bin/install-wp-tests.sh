@@ -31,7 +31,7 @@ if [[ $WP_VERSION == 'nightly' ]]; then
 	WP_TESTS_TAG="trunk"
 	WP_ARCHIVE="https://wordpress.org"
 elif [[ $WP_VERSION == 'latest' ]]; then
-	LATEST_VERSION=$(php -r '$data = json_decode(file_get_contents("https://wordpress.org"), true); echo $data["offers"][0]["current"] ?? "";')
+	LATEST_VERSION=$(php -r '$data = json_decode(file_get_contents("https://wordpress.org"), true); echo $data["offers"]["current"] ?? "";')
 	if [ -z "$LATEST_VERSION" ]; then
 		echo "Failed to determine latest WordPress version"
 		exit 1
@@ -42,6 +42,10 @@ elif [[ $WP_VERSION == 'latest' ]]; then
 		WP_TESTS_TAG="tags/${LATEST_VERSION}.0"
 	fi
 	WP_ARCHIVE="https://wordpress.org"
+else
+	WP_TESTS_TAG="tags/$WP_VERSION"
+	WP_ARCHIVE="https://wordpress.org"
+fi
 
 mkdir -p "$WP_CORE_DIR"
 if [ ! -f "$WP_CORE_DIR/wp-settings.php" ]; then
