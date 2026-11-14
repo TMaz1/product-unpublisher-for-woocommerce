@@ -32,7 +32,7 @@ if [[ $WP_VERSION == 'nightly' ]]; then
 	WP_TESTS_TAG="trunk"
 	WP_ARCHIVE="https://${WP_HOST}/nightly-builds/wordpress-latest.zip"
 elif [[ $WP_VERSION == 'latest' ]]; then
-	LATEST_VERSION=$(php -r '$data = json_decode(file_get_contents("https://api.'"${WP_HOST}"'/core/version-check/1.7/"), true); echo $data["offers"]["current"] ?? "";')
+	LATEST_VERSION=$(php -r '$data = json_decode(file_get_contents("https://api.'"${WP_HOST}"'/core/version-check/1.7/"), true); $first = reset($data["offers"]); echo $first["current"] ?? "";')
 	if [ -z "$LATEST_VERSION" ]; then
 		echo "Failed to determine latest WordPress version"
 		exit 1
