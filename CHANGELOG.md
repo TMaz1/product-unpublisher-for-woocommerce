@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.1.1]
+
+### Added
+- Renamed plugin for trademark compliance and updated to the proper suffix format.
+
 ## [2.1.0]
 
 ### Added
@@ -29,7 +34,7 @@
 ### Changed
 - Split the two large classes into focused classes (time parsing, storage, cron, schedule management, runner, status listener, reconciler, admin rendering, bulk handling, notices). Storage and cron are behind interfaces so the logic is unit-testable.
 - HTML moved into `templates/`.
-- Main file renamed to `woocommerce-product-unpublisher.php` to match the plugin slug.
+- Main file renamed to `product-unpublisher-for-woocommerce.php` to match the plugin slug.
 - Declared HPOS compatibility.
 - Pending products are treated like Draft/Private/Trash: their schedules are removed.
 

@@ -8,6 +8,7 @@
 
 namespace ProductUnpublisher\Admin;
 
+use ProductUnpublisher\Plugin;
 use ProductUnpublisher\Config;
 use ProductUnpublisher\Product\ProductGateway;
 use ProductUnpublisher\Schedule\RetryPolicy;
@@ -50,7 +51,7 @@ final class ListColumn
 			return $columns;
 		}
 
-		$label   = __('Unpublish', 'woocommerce-product-unpublisher');
+		$label   = __('Unpublish', Plugin::TEXT_DOMAIN);
 		$result  = array();
 		$and_add = true;
 
@@ -127,18 +128,18 @@ final class ListColumn
 		echo esc_html(
 			sprintf(
 				/* translators: 1: Scheduled date, 2: Scheduled time. */
-				__('Scheduled %1$s at %2$s', 'woocommerce-product-unpublisher'),
+				__('Scheduled %1$s at %2$s', Plugin::TEXT_DOMAIN),
 				wp_date('Y/m/d', $timestamp),
 				wp_date('H:i', $timestamp)
 			)
 		);
 
 		if ('publish' === $this->products->status($product_id) && $timestamp <= $this->clock->now()) {
-			echo '<br /><span class="wpu-overdue">' . esc_html__('Overdue', 'woocommerce-product-unpublisher') . '</span>';
+			echo '<br /><span class="wpu-overdue">' . esc_html__('Overdue', Plugin::TEXT_DOMAIN) . '</span>';
 		}
 
 		if ($this->retry->exhausted($this->schedules->attempts($product_id))) {
-			echo '<br /><span class="wpu-failed">' . esc_html__('Automatic retries stopped', 'woocommerce-product-unpublisher') . '</span>';
+			echo '<br /><span class="wpu-failed">' . esc_html__('Automatic retries stopped', Plugin::TEXT_DOMAIN) . '</span>';
 		}
 	}
 }

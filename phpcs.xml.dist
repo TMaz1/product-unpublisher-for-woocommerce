@@ -17,6 +17,6 @@
 	<rule ref="WordPress.Security"/>
 	<rule ref="WordPress.WP.I18n"/>
 	<rule ref="WordPress.DB.PreparedSQL"/>
-	<config name="text_domain" value="woocommerce-product-unpublisher"/>
+	<config name="text_domain" value="product-unpublisher-for-woocommerce"/>
 	<config name="minimum_wp_version" value="6.5"/>
 </ruleset>

@@ -10,10 +10,13 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+use ProductUnpublisher\Plugin;
+
 ?>
 <div class="timestamp-wrap">
 	<label>
-		<span class="screen-reader-text"><?php esc_html_e( 'Month', 'woocommerce-product-unpublisher' ); ?></span>
+		<span class="screen-reader-text"><?php esc_html_e( 'Month', Plugin::TEXT_DOMAIN ); ?></span>
 		<select id="<?php echo esc_attr( $prefix . 'mm' ); ?>" name="<?php echo esc_attr( $prefix . 'mm' ); ?>" class="form-required">
 			<?php foreach ( $months as $number => $month ) : ?>
 				<option value="<?php echo esc_attr( $number ); ?>" <?php selected( $parts['mm'], $number ); ?>>
@@ -24,22 +27,22 @@ defined( 'ABSPATH' ) || exit;
 	</label>
 
 	<label>
-		<span class="screen-reader-text"><?php esc_html_e( 'Day', 'woocommerce-product-unpublisher' ); ?></span>
+		<span class="screen-reader-text"><?php esc_html_e( 'Day', Plugin::TEXT_DOMAIN ); ?></span>
 		<input type="text" id="<?php echo esc_attr( $prefix . 'jj' ); ?>" name="<?php echo esc_attr( $prefix . 'jj' ); ?>" value="<?php echo esc_attr( $parts['jj'] ); ?>" size="2" maxlength="2" autocomplete="off" class="form-required" inputmode="numeric" />
 	</label>,
 
 	<label>
-		<span class="screen-reader-text"><?php esc_html_e( 'Year', 'woocommerce-product-unpublisher' ); ?></span>
+		<span class="screen-reader-text"><?php esc_html_e( 'Year', Plugin::TEXT_DOMAIN ); ?></span>
 		<input type="text" id="<?php echo esc_attr( $prefix . 'aa' ); ?>" name="<?php echo esc_attr( $prefix . 'aa' ); ?>" value="<?php echo esc_attr( $parts['aa'] ); ?>" size="4" maxlength="4" autocomplete="off" class="form-required" inputmode="numeric" />
 	</label>
 
-	<?php esc_html_e( 'at', 'woocommerce-product-unpublisher' ); ?>
+	<?php esc_html_e( 'at', Plugin::TEXT_DOMAIN ); ?>
 
 	<label>
-		<span class="screen-reader-text"><?php esc_html_e( 'Hour', 'woocommerce-product-unpublisher' ); ?></span>
+		<span class="screen-reader-text"><?php esc_html_e( 'Hour', Plugin::TEXT_DOMAIN ); ?></span>
 		<input type="text" id="<?php echo esc_attr( $prefix . 'hh' ); ?>" name="<?php echo esc_attr( $prefix . 'hh' ); ?>" value="<?php echo esc_attr( $parts['hh'] ); ?>" size="2" maxlength="2" autocomplete="off" class="form-required" inputmode="numeric" />
 	</label>:<label>
-		<span class="screen-reader-text"><?php esc_html_e( 'Minute', 'woocommerce-product-unpublisher' ); ?></span>
+		<span class="screen-reader-text"><?php esc_html_e( 'Minute', Plugin::TEXT_DOMAIN ); ?></span>
 		<input type="text" id="<?php echo esc_attr( $prefix . 'mn' ); ?>" name="<?php echo esc_attr( $prefix . 'mn' ); ?>" value="<?php echo esc_attr( $parts['mn'] ); ?>" size="2" maxlength="2" autocomplete="off" class="form-required" inputmode="numeric" />
 	</label>
 </div>

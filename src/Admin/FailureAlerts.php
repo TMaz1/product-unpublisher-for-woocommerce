@@ -7,6 +7,7 @@
 
 namespace ProductUnpublisher\Admin;
 
+use ProductUnpublisher\Plugin;
 use ProductUnpublisher\Config;
 use ProductUnpublisher\Diagnostics\FailureLog;
 
@@ -67,7 +68,7 @@ final class FailureAlerts {
 						'Product Unpublisher: %d product needs attention. It was either moved to Draft but its schedule could not be fully cleaned up, or its automatic retries were used up.',
 						'Product Unpublisher: %d products need attention. They were either moved to Draft but their schedules could not be fully cleaned up, or their automatic retries were used up.',
 						count( $ids ),
-						'woocommerce-product-unpublisher'
+						Plugin::TEXT_DOMAIN
 					),
 					count( $ids )
 				)
@@ -75,12 +76,12 @@ final class FailureAlerts {
 			esc_html(
 				sprintf(
 					/* translators: %s: comma separated product IDs. */
-					__( 'Product IDs: %s.', 'woocommerce-product-unpublisher' ),
+					__( 'Product IDs: %s.', Plugin::TEXT_DOMAIN ),
 					implode( ', ', array_slice( $ids, 0, 20 ) )
 				)
 			),
 			esc_url( wp_nonce_url( add_query_arg( self::DISMISS_ARG, '1', $this->list_url() ), self::DISMISS_ARG ) ),
-			esc_html__( 'Dismiss', 'woocommerce-product-unpublisher' )
+			esc_html__( 'Dismiss', Plugin::TEXT_DOMAIN )
 		);
 	}
 

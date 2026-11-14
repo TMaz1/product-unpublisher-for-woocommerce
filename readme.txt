@@ -1,7 +1,8 @@
-=== WooCommerce Product Unpublisher ===
-Contributors: woocommerce-product-unpublisher
-Tags: woocommerce, products, scheduling, draft, bulk edit
+=== Product Unpublisher for WooCommerce ===
+Contributors: tmaz1
+Tags: products, scheduling, draft, bulk edit, unpublish
 Requires at least: 6.5
+Tested up to: 7.1
 Requires PHP: 8.2
 Requires Plugins: woocommerce
 Stable tag: 2.1.0
@@ -69,6 +70,10 @@ Yes. The plugin only uses product posts and post meta.
 
 == Changelog ==
 
+= 2.1.1 =
+* Initial release on WordPress.org.
+* Renamed plugin for trademark compliance and updated to the proper suffix format.
+
 = 2.1.0 =
 * New: bulk scheduled unpublishing in Bulk Edit (schedule, remove, unpublish now) with confirmations and a per-product result report.
 * New: "Unpublishes" column on the Products list.
@@ -83,9 +88,4 @@ Yes. The plugin only uses product posts and post meta.
 * Changed: code reorganised into small single-purpose classes; added uninstall cleanup, unit, integration and end-to-end tests, and CI.
 
 = 2.0.0 =
-* Initial release.
-
-== Upgrade Notice ==
-
-= 2.1.0 =
-Adds bulk scheduled unpublishing and fixes several reliability issues. The main plugin file was renamed to woocommerce-product-unpublisher.php; reactivate the plugin if WordPress deactivates it after the update.
+* Previous GitHub release.

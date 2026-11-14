@@ -1,15 +1,16 @@
 <?php
 /**
- * Plugin Name: WooCommerce Product Unpublisher
+ * Plugin Name: Product Unpublisher for WooCommerce
  * Description: Schedule published WooCommerce products to automatically return to draft status, individually or in bulk.
- * Version: 2.1.0
+ * Version: 2.1.1
  * Requires at least: 6.5
  * Requires PHP: 8.2
  * Requires Plugins: woocommerce
- * Author: WooCommerce Product Unpublisher
+ * Author: Tayyaba M
+ * Author URI: https://tayyaba.uk/
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: woocommerce-product-unpublisher
+ * Text Domain: product-unpublisher-for-woocommerce
  *
  * @package ProductUnpublisher
  */

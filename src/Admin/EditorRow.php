@@ -7,6 +7,7 @@
 
 namespace ProductUnpublisher\Admin;
 
+use ProductUnpublisher\Plugin;
 use ProductUnpublisher\Config;
 use ProductUnpublisher\Schedule\ScheduleManager;
 use ProductUnpublisher\Time\Clock;
@@ -47,8 +48,8 @@ final class EditorRow {
 		$now       = $this->clock->now();
 
 		$label = ( null !== $timestamp && $timestamp <= $now )
-			? __( 'Unpublishing overdue:', 'woocommerce-product-unpublisher' )
-			: __( 'Unpublish on:', 'woocommerce-product-unpublisher' );
+			? __( 'Unpublishing overdue:', Plugin::TEXT_DOMAIN )
+			: __( 'Unpublish on:', Plugin::TEXT_DOMAIN );
 
 		View::render(
 			'editor-row',
@@ -57,7 +58,7 @@ final class EditorRow {
 				'label'     => $label,
 				'current'   => null !== $timestamp
 					? $this->display->long( $timestamp )
-					: __( 'Not scheduled', 'woocommerce-product-unpublisher' ),
+					: __( 'Not scheduled', Plugin::TEXT_DOMAIN ),
 				'parts'     => $this->parts->from_timestamp( $timestamp ?? $now ),
 				'months'    => Months::names(),
 			)

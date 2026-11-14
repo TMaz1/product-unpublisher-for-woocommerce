@@ -33,7 +33,7 @@ services:
       WP_CORE_DIR: /var/wordpress-tests/wordpress
     volumes:
       - wordpress_data:/var/www/html
-      - ./:/var/www/html/wp-content/plugins/woocommerce-product-unpublisher
+      - ./:/var/www/html/wp-content/plugins/product-unpublisher-for-woocommerce
       - wp_test_data:/var/wordpress-tests
 
 volumes:

@@ -4,7 +4,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-SLUG=woocommerce-product-unpublisher
+SLUG=product-unpublisher-for-woocommerce
 VERSION=$(grep -m1 -E '^ \* Version:' "$SLUG.php" | sed -E 's/.*Version:[[:space:]]*//')
 STAGE=$(mktemp -d)
 DEST="$STAGE/$SLUG"

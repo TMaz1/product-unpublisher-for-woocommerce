@@ -12,6 +12,9 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+use ProductUnpublisher\Plugin;
+
 ?>
 <div class="misc-pub-section curtime misc-pub-curtime" id="wpu-publish-row">
 	<span class="dashicons dashicons-calendar-alt" aria-hidden="true"></span>
@@ -22,14 +25,14 @@ defined( 'ABSPATH' ) || exit;
 	</span>
 
 	<a href="#wpu-edit" class="edit-timestamp hide-if-no-js" id="wpu-edit-toggle" role="button" aria-expanded="false" aria-controls="wpu-edit-panel">
-		<span aria-hidden="true"><?php esc_html_e( 'Edit', 'woocommerce-product-unpublisher' ); ?></span>
-		<span class="screen-reader-text"><?php esc_html_e( 'Edit unpublishing date and time', 'woocommerce-product-unpublisher' ); ?></span>
+		<span aria-hidden="true"><?php esc_html_e( 'Edit', Plugin::TEXT_DOMAIN ); ?></span>
+		<span class="screen-reader-text"><?php esc_html_e( 'Edit unpublishing date and time', Plugin::TEXT_DOMAIN ); ?></span>
 	</a>
 
 	<input type="hidden" name="wpu_action" id="wpu_action" value="" />
 
 	<fieldset id="wpu-edit-panel" hidden>
-		<legend class="screen-reader-text"><?php esc_html_e( 'Unpublishing date and time', 'woocommerce-product-unpublisher' ); ?></legend>
+		<legend class="screen-reader-text"><?php esc_html_e( 'Unpublishing date and time', Plugin::TEXT_DOMAIN ); ?></legend>
 
 		<?php
 		\ProductUnpublisher\Admin\View::render(
@@ -45,9 +48,9 @@ defined( 'ABSPATH' ) || exit;
 		<p id="wpu-error" class="wpu-error" role="alert" hidden></p>
 
 		<p>
-			<a href="#wpu-save" class="save-timestamp button" id="wpu-ok"><?php esc_html_e( 'OK', 'woocommerce-product-unpublisher' ); ?></a>
-			<a href="#wpu-cancel" class="cancel-timestamp button-cancel" id="wpu-cancel"><?php esc_html_e( 'Cancel', 'woocommerce-product-unpublisher' ); ?></a>
-			<a href="#wpu-remove" class="wpu-remove" id="wpu-remove" <?php echo $timestamp ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove schedule', 'woocommerce-product-unpublisher' ); ?></a>
+			<a href="#wpu-save" class="save-timestamp button" id="wpu-ok"><?php esc_html_e( 'OK', Plugin::TEXT_DOMAIN ); ?></a>
+			<a href="#wpu-cancel" class="cancel-timestamp button-cancel" id="wpu-cancel"><?php esc_html_e( 'Cancel', Plugin::TEXT_DOMAIN ); ?></a>
+			<a href="#wpu-remove" class="wpu-remove" id="wpu-remove" <?php echo $timestamp ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove schedule', Plugin::TEXT_DOMAIN ); ?></a>
 		</p>
 	</fieldset>
 </div>

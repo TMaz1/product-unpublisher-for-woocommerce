@@ -7,6 +7,8 @@
 
 namespace ProductUnpublisher\Admin;
 
+use ProductUnpublisher\Plugin;
+
 defined( 'ABSPATH' ) || exit;
 
 final class Months {
@@ -18,18 +20,18 @@ final class Months {
 	 */
 	public static function names(): array {
 		return array(
-			'01' => __( 'January', 'woocommerce-product-unpublisher' ),
-			'02' => __( 'February', 'woocommerce-product-unpublisher' ),
-			'03' => __( 'March', 'woocommerce-product-unpublisher' ),
-			'04' => __( 'April', 'woocommerce-product-unpublisher' ),
-			'05' => __( 'May', 'woocommerce-product-unpublisher' ),
-			'06' => __( 'June', 'woocommerce-product-unpublisher' ),
-			'07' => __( 'July', 'woocommerce-product-unpublisher' ),
-			'08' => __( 'August', 'woocommerce-product-unpublisher' ),
-			'09' => __( 'September', 'woocommerce-product-unpublisher' ),
-			'10' => __( 'October', 'woocommerce-product-unpublisher' ),
-			'11' => __( 'November', 'woocommerce-product-unpublisher' ),
-			'12' => __( 'December', 'woocommerce-product-unpublisher' ),
+			'01' => __( 'January', Plugin::TEXT_DOMAIN ),
+			'02' => __( 'February', Plugin::TEXT_DOMAIN ),
+			'03' => __( 'March', Plugin::TEXT_DOMAIN ),
+			'04' => __( 'April', Plugin::TEXT_DOMAIN ),
+			'05' => __( 'May', Plugin::TEXT_DOMAIN ),
+			'06' => __( 'June', Plugin::TEXT_DOMAIN ),
+			'07' => __( 'July', Plugin::TEXT_DOMAIN ),
+			'08' => __( 'August', Plugin::TEXT_DOMAIN ),
+			'09' => __( 'September', Plugin::TEXT_DOMAIN ),
+			'10' => __( 'October', Plugin::TEXT_DOMAIN ),
+			'11' => __( 'November', Plugin::TEXT_DOMAIN ),
+			'12' => __( 'December', Plugin::TEXT_DOMAIN ),
 		);
 	}
 
@@ -40,13 +42,13 @@ final class Months {
 	 */
 	public static function weekdays(): array {
 		return array(
-			__( 'Sunday', 'woocommerce-product-unpublisher' ),
-			__( 'Monday', 'woocommerce-product-unpublisher' ),
-			__( 'Tuesday', 'woocommerce-product-unpublisher' ),
-			__( 'Wednesday', 'woocommerce-product-unpublisher' ),
-			__( 'Thursday', 'woocommerce-product-unpublisher' ),
-			__( 'Friday', 'woocommerce-product-unpublisher' ),
-			__( 'Saturday', 'woocommerce-product-unpublisher' ),
+			__( 'Sunday', Plugin::TEXT_DOMAIN ),
+			__( 'Monday', Plugin::TEXT_DOMAIN ),
+			__( 'Tuesday', Plugin::TEXT_DOMAIN ),
+			__( 'Wednesday', Plugin::TEXT_DOMAIN ),
+			__( 'Thursday', Plugin::TEXT_DOMAIN ),
+			__( 'Friday', Plugin::TEXT_DOMAIN ),
+			__( 'Saturday', Plugin::TEXT_DOMAIN ),
 		);
 	}
 }

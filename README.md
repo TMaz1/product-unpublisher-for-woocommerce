@@ -1,4 +1,4 @@
-# WooCommerce Product Unpublisher
+# Product Unpublisher for WooCommerce
 
 Schedule published WooCommerce products to return to **Draft** automatically — individually in the product editor, or in bulk from **Products → All Products → Bulk Edit**.
 
@@ -7,7 +7,7 @@ See `readme.txt` for the user-facing description (WordPress.org format) and `CHA
 ## Layout
 
 ```
-woocommerce-product-unpublisher.php   Bootstrap (headers, constants, hooks)
+product-unpublisher-for-woocommerce.php   Bootstrap (headers, constants, hooks)
 uninstall.php                         Removes all plugin data
 src/
   Plugin.php                          Composition root
@@ -62,5 +62,14 @@ A Docker-based manual environment is also provided (`docker compose up`, then ht
 ## Building the release ZIP
 
 ```bash
-bin/build-zip.sh      # writes dist/woocommerce-product-unpublisher-<version>.zip
+bin/build-zip.sh      # writes dist/product-unpublisher-for-woocommerce-<version>.zip
+```
+
+
+npx wp-env start 
+
+Activate the plugin
+```bash
+npx wp-env run tests-cli wp plugin list # is the plugin active?
+npx wp-env run tests-cli wp plugin activate product-unpublisher-for-woocommerce # activate plugin
 ```

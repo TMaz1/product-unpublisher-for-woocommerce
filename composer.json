@@ -1,6 +1,6 @@
 {
-  "name": "woocommerce-product-unpublisher/woocommerce-product-unpublisher",
-  "description": "Schedule published WooCommerce products to return to Draft, individually or in bulk.",
+  "name": "product-unpublisher-for-woocommerce/product-unpublisher-for-woocommerce",
+  "description": "Schedule published products to return to Draft, individually or in bulk, for WooCommerce.",
   "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",
   "require": {

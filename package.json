@@ -1,8 +1,8 @@
 {
-  "name": "woocommerce-product-unpublisher",
+  "name": "product-unpublisher-for-woocommerce",
   "version": "2.1.0",
   "private": true,
-  "description": "Development tooling for WooCommerce Product Unpublisher.",
+  "description": "Development tooling Product Unpublisher for WooCommerce.",
   "license": "GPL-2.0-or-later",
   "scripts": {
     "test:js": "jest",
