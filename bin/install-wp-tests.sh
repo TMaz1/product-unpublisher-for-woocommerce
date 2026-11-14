@@ -31,13 +31,17 @@ if [[ $WP_VERSION == 'nightly' ]]; then
 	WP_TESTS_TAG="trunk"
 	WP_ARCHIVE="https://wordpress.org"
 elif [[ $WP_VERSION == 'latest' ]]; then
-	LATEST_VERSION=$(curl -fsSL "https://wordpress.org" | grep -o '"current"[[:space:]]*:[[:space:]]*"[^"]*"' | head -n1 | cut -d'"' -f4)
-	WP_TESTS_TAG="tags/$LATEST_VERSION"
+	LATEST_VERSION=$(php -r '$data = json_decode(file_get_contents("https://wordpress.org"), true); echo $data["offers"][0]["current"] ?? "";')
+	if [ -z "$LATEST_VERSION" ]; then
+		echo "Failed to determine latest WordPress version"
+		exit 1
+	fi
+	if svn ls "https://wordpress.org" >/dev/null 2>&1; then
+		WP_TESTS_TAG="tags/$LATEST_VERSION"
+	else
+		WP_TESTS_TAG="tags/${LATEST_VERSION}.0"
+	fi
 	WP_ARCHIVE="https://wordpress.org"
-else
-	WP_TESTS_TAG="tags/$WP_VERSION"
-	WP_ARCHIVE="https://wordpress.org/wordpress-$WP_VERSION.tar.gz"
-fi
 
 mkdir -p "$WP_CORE_DIR"
 if [ ! -f "$WP_CORE_DIR/wp-settings.php" ]; then

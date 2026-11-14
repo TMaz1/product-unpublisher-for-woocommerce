@@ -1,15 +1,16 @@
-const { execSync } = require('child_process');
+const path = require('path');
+const { execFileSync } = require('child_process');
 
 /** Run a WP-CLI command inside the wp-env tests container and return trimmed stdout. */
-const { execFileSync } = require('child_process');
-const wpEnvBin = require.resolve('@wordpress/env/bin/wp-env');
+const wpEnvDir = path.dirname(require.resolve('@wordpress/env/package.json'));
+const wpEnvBin = path.join(wpEnvDir, 'bin', 'wp-env');
 
 function wp(args) {
 	const argList = Array.isArray(args)
 		? args
 		: args.match(/(?:[^\s"']+|"[^"]*"|'[^']*')+/g).map((s) => s.replace(/^['"]|['"]$/g, ''));
 
-		// works cross - platform with zero shell escaping issues
+	// works cross-platform with zero shell escaping issues
 	return execFileSync(process.execPath, [wpEnvBin, 'run', 'tests-cli', 'wp', ...argList], {
 		encoding: 'utf8',
 		stdio: ['ignore', 'pipe', 'pipe'],
