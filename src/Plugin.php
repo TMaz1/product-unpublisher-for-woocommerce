@@ -40,27 +40,6 @@ defined('ABSPATH') || exit;
 
 final class Plugin
 {
-	// Plugin identity.
-	public const NAME        = 'Product Unpublisher for WooCommerce';
-	public const SLUG        = 'product-unpublisher-for-woocommerce';
-	public const TEXT_DOMAIN = 'product-unpublisher-for-woocommerce';
-
-	// Internal identifiers.
-	public const PREFIX = 'wpu';
-
-	// Admin script handles.
-	public const SCRIPT_DATE_UTILS = 'wpu-date-utils';
-	public const SCRIPT_EDITOR     = 'wpu-editor';
-	public const SCRIPT_BULK_EDIT  = 'wpu-bulk-edit';
-
-	// Admin style handles.
-	public const STYLE_EDITOR    = 'wpu-editor';
-	public const STYLE_BULK_EDIT = 'wpu-bulk-edit';
-
-	// JavaScript globals.
-	public const JS_ADMIN_GLOBAL = 'wpuAdmin';
-	public const JS_BULK_GLOBAL  = 'wpuBulk';
-
 	private static ?Plugin $instance = null;
 
 	private bool $booted = false;
@@ -118,7 +97,7 @@ final class Plugin
 
 		printf(
 			'<div class="notice notice-error"><p>%s</p></div>',
-			esc_html__('WooCommerce Product Unpublisher requires WooCommerce to be installed and active.', self::TEXT_DOMAIN)
+			esc_html__('WooCommerce Product Unpublisher requires WooCommerce to be installed and active.', 'product-unpublisher-for-woocommerce')
 		);
 	}
 

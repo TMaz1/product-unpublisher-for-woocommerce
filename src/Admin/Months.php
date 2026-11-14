@@ -20,18 +20,18 @@ final class Months {
 	 */
 	public static function names(): array {
 		return array(
-			'01' => __( 'January', Plugin::TEXT_DOMAIN ),
-			'02' => __( 'February', Plugin::TEXT_DOMAIN ),
-			'03' => __( 'March', Plugin::TEXT_DOMAIN ),
-			'04' => __( 'April', Plugin::TEXT_DOMAIN ),
-			'05' => __( 'May', Plugin::TEXT_DOMAIN ),
-			'06' => __( 'June', Plugin::TEXT_DOMAIN ),
-			'07' => __( 'July', Plugin::TEXT_DOMAIN ),
-			'08' => __( 'August', Plugin::TEXT_DOMAIN ),
-			'09' => __( 'September', Plugin::TEXT_DOMAIN ),
-			'10' => __( 'October', Plugin::TEXT_DOMAIN ),
-			'11' => __( 'November', Plugin::TEXT_DOMAIN ),
-			'12' => __( 'December', Plugin::TEXT_DOMAIN ),
+			'01' => __( 'January', 'product-unpublisher-for-woocommerce' ),
+			'02' => __( 'February', 'product-unpublisher-for-woocommerce' ),
+			'03' => __( 'March', 'product-unpublisher-for-woocommerce' ),
+			'04' => __( 'April', 'product-unpublisher-for-woocommerce' ),
+			'05' => __( 'May', 'product-unpublisher-for-woocommerce' ),
+			'06' => __( 'June', 'product-unpublisher-for-woocommerce' ),
+			'07' => __( 'July', 'product-unpublisher-for-woocommerce' ),
+			'08' => __( 'August', 'product-unpublisher-for-woocommerce' ),
+			'09' => __( 'September', 'product-unpublisher-for-woocommerce' ),
+			'10' => __( 'October', 'product-unpublisher-for-woocommerce' ),
+			'11' => __( 'November', 'product-unpublisher-for-woocommerce' ),
+			'12' => __( 'December', 'product-unpublisher-for-woocommerce' ),
 		);
 	}
 
@@ -42,13 +42,13 @@ final class Months {
 	 */
 	public static function weekdays(): array {
 		return array(
-			__( 'Sunday', Plugin::TEXT_DOMAIN ),
-			__( 'Monday', Plugin::TEXT_DOMAIN ),
-			__( 'Tuesday', Plugin::TEXT_DOMAIN ),
-			__( 'Wednesday', Plugin::TEXT_DOMAIN ),
-			__( 'Thursday', Plugin::TEXT_DOMAIN ),
-			__( 'Friday', Plugin::TEXT_DOMAIN ),
-			__( 'Saturday', Plugin::TEXT_DOMAIN ),
+			__( 'Sunday', 'product-unpublisher-for-woocommerce' ),
+			__( 'Monday', 'product-unpublisher-for-woocommerce' ),
+			__( 'Tuesday', 'product-unpublisher-for-woocommerce' ),
+			__( 'Wednesday', 'product-unpublisher-for-woocommerce' ),
+			__( 'Thursday', 'product-unpublisher-for-woocommerce' ),
+			__( 'Friday', 'product-unpublisher-for-woocommerce' ),
+			__( 'Saturday', 'product-unpublisher-for-woocommerce' ),
 		);
 	}
 }

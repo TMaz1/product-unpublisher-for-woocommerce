@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WPU_VERSION', '2.1.0' );
+define( 'WPU_VERSION', '2.1.1' );
 define( 'WPU_FILE', __FILE__ );
 define( 'WPU_PATH', plugin_dir_path( __FILE__ ) );
 define( 'WPU_URL', plugin_dir_url( __FILE__ ) );

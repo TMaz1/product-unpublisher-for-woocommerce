@@ -51,7 +51,7 @@ final class ListColumn
 			return $columns;
 		}
 
-		$label   = __('Unpublish', Plugin::TEXT_DOMAIN);
+		$label   = __('Unpublish', 'product-unpublisher-for-woocommerce');
 		$result  = array();
 		$and_add = true;
 
@@ -128,18 +128,18 @@ final class ListColumn
 		echo esc_html(
 			sprintf(
 				/* translators: 1: Scheduled date, 2: Scheduled time. */
-				__('Scheduled %1$s at %2$s', Plugin::TEXT_DOMAIN),
+				__('Scheduled %1$s at %2$s', 'product-unpublisher-for-woocommerce'),
 				wp_date('Y/m/d', $timestamp),
 				wp_date('H:i', $timestamp)
 			)
 		);
 
 		if ('publish' === $this->products->status($product_id) && $timestamp <= $this->clock->now()) {
-			echo '<br /><span class="wpu-overdue">' . esc_html__('Overdue', Plugin::TEXT_DOMAIN) . '</span>';
+			echo '<br /><span class="wpu-overdue">' . esc_html__('Overdue', 'product-unpublisher-for-woocommerce') . '</span>';
 		}
 
 		if ($this->retry->exhausted($this->schedules->attempts($product_id))) {
-			echo '<br /><span class="wpu-failed">' . esc_html__('Automatic retries stopped', Plugin::TEXT_DOMAIN) . '</span>';
+			echo '<br /><span class="wpu-failed">' . esc_html__('Automatic retries stopped', 'product-unpublisher-for-woocommerce') . '</span>';
 		}
 	}
 }

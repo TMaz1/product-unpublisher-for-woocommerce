@@ -48,8 +48,8 @@ final class EditorRow {
 		$now       = $this->clock->now();
 
 		$label = ( null !== $timestamp && $timestamp <= $now )
-			? __( 'Unpublishing overdue:', Plugin::TEXT_DOMAIN )
-			: __( 'Unpublish on:', Plugin::TEXT_DOMAIN );
+			? __( 'Unpublishing overdue:', 'product-unpublisher-for-woocommerce' )
+			: __( 'Unpublish on:', 'product-unpublisher-for-woocommerce' );
 
 		View::render(
 			'editor-row',
@@ -58,7 +58,7 @@ final class EditorRow {
 				'label'     => $label,
 				'current'   => null !== $timestamp
 					? $this->display->long( $timestamp )
-					: __( 'Not scheduled', Plugin::TEXT_DOMAIN ),
+					: __( 'Not scheduled', 'product-unpublisher-for-woocommerce' ),
 				'parts'     => $this->parts->from_timestamp( $timestamp ?? $now ),
 				'months'    => Months::names(),
 			)

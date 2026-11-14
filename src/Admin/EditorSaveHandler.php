@@ -82,7 +82,7 @@ final class EditorSaveHandler {
 		if ( $this->schedules->remove( $post_id ) ) {
 			$this->notices->add(
 				$post_id,
-				__( 'The product unpublishing schedule has been removed.', Plugin::TEXT_DOMAIN ),
+				__( 'The product unpublishing schedule has been removed.', 'product-unpublisher-for-woocommerce' ),
 				'success'
 			);
 			return;
@@ -90,7 +90,7 @@ final class EditorSaveHandler {
 
 		$this->notices->add(
 			$post_id,
-			__( 'Could not completely remove the unpublishing schedule. Please try again.', Plugin::TEXT_DOMAIN ),
+			__( 'Could not completely remove the unpublishing schedule. Please try again.', 'product-unpublisher-for-woocommerce' ),
 			'error'
 		);
 	}
@@ -104,7 +104,7 @@ final class EditorSaveHandler {
 		if ( ! in_array( $status, Config::SCHEDULABLE_STATUSES, true ) ) {
 			$this->notices->add(
 				$post_id,
-				__( 'Only published or scheduled products can have an unpublishing schedule.', Plugin::TEXT_DOMAIN ),
+				__( 'Only published or scheduled products can have an unpublishing schedule.', 'product-unpublisher-for-woocommerce' ),
 				'error'
 			);
 			return;
@@ -123,7 +123,7 @@ final class EditorSaveHandler {
 			if ( null !== $publish_at && $timestamp <= $publish_at ) {
 				$this->notices->add(
 					$post_id,
-					__( 'Unpublishing must be later than scheduled publication. The previous schedule was retained.', Plugin::TEXT_DOMAIN ),
+					__( 'Unpublishing must be later than scheduled publication. The previous schedule was retained.', 'product-unpublisher-for-woocommerce' ),
 					'error'
 				);
 				return;
@@ -133,7 +133,7 @@ final class EditorSaveHandler {
 		if ( ! $this->schedules->replace( $post_id, $timestamp ) ) {
 			$this->notices->add(
 				$post_id,
-				__( 'Could not schedule unpublishing. Check WordPress cron configuration. Your previous schedule was kept where possible.', Plugin::TEXT_DOMAIN ),
+				__( 'Could not schedule unpublishing. Check WordPress cron configuration. Your previous schedule was kept where possible.', 'product-unpublisher-for-woocommerce' ),
 				'error'
 			);
 			return;
@@ -144,7 +144,7 @@ final class EditorSaveHandler {
 			? sprintf(
 				'<a href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a>',
 				esc_url( $preview_url ),
-				esc_html__( 'Preview product', Plugin::TEXT_DOMAIN )
+				esc_html__( 'Preview product', 'product-unpublisher-for-woocommerce' )
 			)
 			: '';
 
@@ -153,7 +153,7 @@ final class EditorSaveHandler {
 			trim(
 				sprintf(
 					/* translators: 1: date and time, 2: preview link. */
-					__( 'Product scheduled unpublishing for: %1$s. %2$s', Plugin::TEXT_DOMAIN ),
+					__( 'Product scheduled unpublishing for: %1$s. %2$s', 'product-unpublisher-for-woocommerce' ),
 					esc_html( $this->display->short( $timestamp ) ),
 					$link
 				)
@@ -164,9 +164,9 @@ final class EditorSaveHandler {
 
 	private function date_error_message( string $reason ): string {
 		if ( InvalidScheduleDateException::INCOMPLETE === $reason ) {
-			return __( 'The unpublishing date is incomplete. The previous schedule was retained.', Plugin::TEXT_DOMAIN );
+			return __( 'The unpublishing date is incomplete. The previous schedule was retained.', 'product-unpublisher-for-woocommerce' );
 		}
 
-		return __( 'Choose a valid unpublishing date and time in the future. The previous schedule was retained.', Plugin::TEXT_DOMAIN );
+		return __( 'Choose a valid unpublishing date and time in the future. The previous schedule was retained.', 'product-unpublisher-for-woocommerce' );
 	}
 }

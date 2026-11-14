@@ -39,7 +39,7 @@ final class Assets {
 		}
 
 		wp_register_script(
-			Plugin::SCRIPT_DATE_UTILS,
+			'wpu-date-utils',
 			WPU_URL . 'assets/js/date-utils.js',
 			array(),
 			WPU_VERSION,
@@ -47,27 +47,27 @@ final class Assets {
 		);
 
 		if ( $is_editor ) {
-			wp_enqueue_style( Plugin::STYLE_EDITOR, WPU_URL . 'assets/css/unpublisher.css', array(), WPU_VERSION );
+			wp_enqueue_style( 'wpu-editor', WPU_URL . 'assets/css/unpublisher.css', array(), WPU_VERSION );
 			wp_enqueue_script(
-				Plugin::STYLE_EDITOR,
+				'wpu-editor',
 				WPU_URL . 'assets/js/unpublisher.js',
-				array( 'jquery', Plugin::SCRIPT_DATE_UTILS ),
+				array( 'jquery', 'wpu-date-utils' ),
 				WPU_VERSION,
 				true
 			);
-			wp_localize_script( Plugin::STYLE_EDITOR, Plugin::JS_ADMIN_GLOBAL, $this->editor_data() );
+			wp_localize_script( 'wpu-editor', 'wpuAdmin', $this->editor_data() );
 			return;
 		}
 
-		wp_enqueue_style( Plugin::SCRIPT_BULK_EDIT , WPU_URL . 'assets/css/bulk-edit.css', array(), WPU_VERSION );
+		wp_enqueue_style( 'wpu-bulk-edit' , WPU_URL . 'assets/css/bulk-edit.css', array(), WPU_VERSION );
 		wp_enqueue_script(
-			Plugin::SCRIPT_BULK_EDIT,
+			'wpu-bulk-edit',
 			WPU_URL . 'assets/js/bulk-edit.js',
-			array( 'jquery', Plugin::SCRIPT_DATE_UTILS, 'inline-edit-post' ),
+			array( 'jquery', 'wpu-date-utils', 'inline-edit-post' ),
 			WPU_VERSION,
 			true
 		);
-		wp_localize_script( Plugin::SCRIPT_BULK_EDIT, Plugin::JS_BULK_GLOBAL, $this->bulk_data() );
+		wp_localize_script( 'wpu-bulk-edit', 'wpuBulk', $this->bulk_data() );
 	}
 
 	/**
@@ -83,10 +83,10 @@ final class Assets {
 			'weekdays'   => Months::weekdays(),
 			'dateFormat' => get_option( 'date_format' ),
 			'timeFormat' => get_option( 'time_format' ),
-			'atLabel'    => __( 'at', Plugin::TEXT_DOMAIN ),
+			'atLabel'    => __( 'at', 'product-unpublisher-for-woocommerce' ),
 			'now'        => array_map( 'intval', explode( ',', $now->format( 'Y,n,j,G,i' ) ) ),
-			'invalid'    => __( 'Please enter a valid date and time.', Plugin::TEXT_DOMAIN ),
-			'past'       => __( 'Choose a date and time in the future.', Plugin::TEXT_DOMAIN ),
+			'invalid'    => __( 'Please enter a valid date and time.', 'product-unpublisher-for-woocommerce' ),
+			'past'       => __( 'Choose a date and time in the future.', 'product-unpublisher-for-woocommerce' ),
 		);
 	}
 
@@ -97,11 +97,11 @@ final class Assets {
 		return array_merge(
 			$this->common_data(),
 			array(
-				'before'         => __( 'Unpublishing must be later than scheduled publication.', Plugin::TEXT_DOMAIN ),
-				'confirmRemove'  => __( 'Remove the unpublishing schedule? The product will stay published. The change is applied when you click Update.', Plugin::TEXT_DOMAIN ),
-				'unpublishLabel' => __( 'Unpublish on:', Plugin::TEXT_DOMAIN ),
-				'removalPending' => __( 'Schedule will be removed when you update.', Plugin::TEXT_DOMAIN ),
-				'notScheduled'   => __( 'Not scheduled', Plugin::TEXT_DOMAIN ),
+				'before'         => __( 'Unpublishing must be later than scheduled publication.', 'product-unpublisher-for-woocommerce' ),
+				'confirmRemove'  => __( 'Remove the unpublishing schedule? The product will stay published. The change is applied when you click Update.', 'product-unpublisher-for-woocommerce' ),
+				'unpublishLabel' => __( 'Unpublish on:', 'product-unpublisher-for-woocommerce' ),
+				'removalPending' => __( 'Schedule will be removed when you update.', 'product-unpublisher-for-woocommerce' ),
+				'notScheduled'   => __( 'Not scheduled', 'product-unpublisher-for-woocommerce' ),
 			)
 		);
 	}
@@ -114,18 +114,18 @@ final class Assets {
 			$this->common_data(),
 			array(
 				/* translators: %d: number of products. */
-				'confirmNowOne'      => __( 'Unpublish %d selected published product now? It will immediately become a Draft, will no longer be visible in your store, and any scheduled unpublishing for it will be removed.', Plugin::TEXT_DOMAIN ),
+				'confirmNowOne'      => __( 'Unpublish %d selected published product now? It will immediately become a Draft, will no longer be visible in your store, and any scheduled unpublishing for it will be removed.', 'product-unpublisher-for-woocommerce' ),
 				/* translators: %d: number of products. */
-				'confirmNowMany'     => __( 'Unpublish %d selected published products now? They will immediately become Drafts, will no longer be visible in your store, and any scheduled unpublishing for them will be removed.', Plugin::TEXT_DOMAIN ),
+				'confirmNowMany'     => __( 'Unpublish %d selected published products now? They will immediately become Drafts, will no longer be visible in your store, and any scheduled unpublishing for them will be removed.', 'product-unpublisher-for-woocommerce' ),
 				/* translators: %d: number of products that are not published. */
-				'confirmNowSkipped'  => __( '%d selected product is not published and will be left unchanged.', Plugin::TEXT_DOMAIN ),
+				'confirmNowSkipped'  => __( '%d selected product is not published and will be left unchanged.', 'product-unpublisher-for-woocommerce' ),
 				/* translators: %d: number of products that are not published. */
-				'confirmNowSkippedMany' => __( '%d selected products are not published and will be left unchanged.', Plugin::TEXT_DOMAIN ),
-				'nothingToUnpublish' => __( 'None of the selected products are published, so there is nothing to unpublish.', Plugin::TEXT_DOMAIN ),
+				'confirmNowSkippedMany' => __( '%d selected products are not published and will be left unchanged.', 'product-unpublisher-for-woocommerce' ),
+				'nothingToUnpublish' => __( 'None of the selected products are published, so there is nothing to unpublish.', 'product-unpublisher-for-woocommerce' ),
 				/* translators: %d: number of products. */
-				'confirmRemoveOne'   => __( 'Remove the scheduled unpublishing from %d selected product? This deletes its scheduled date, its cron event and any retry information. The product stays published.', Plugin::TEXT_DOMAIN ),
+				'confirmRemoveOne'   => __( 'Remove the scheduled unpublishing from %d selected product? This deletes its scheduled date, its cron event and any retry information. The product stays published.', 'product-unpublisher-for-woocommerce' ),
 				/* translators: %d: number of products. */
-				'confirmRemoveMany'  => __( 'Remove the scheduled unpublishing from %d selected products? This deletes their scheduled dates, their cron events and any retry information. The products stay published.', Plugin::TEXT_DOMAIN ),
+				'confirmRemoveMany'  => __( 'Remove the scheduled unpublishing from %d selected products? This deletes their scheduled dates, their cron events and any retry information. The products stay published.', 'product-unpublisher-for-woocommerce' ),
 			)
 		);
 	}

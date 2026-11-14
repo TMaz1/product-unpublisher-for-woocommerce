@@ -113,7 +113,7 @@ final class BulkNotice {
 					'%d product was moved to Draft, but its unpublishing schedule data could not be fully removed. Use "Remove scheduled unpublishing" on it to try again.',
 					'%d products were moved to Draft, but their unpublishing schedule data could not be fully removed. Use "Remove scheduled unpublishing" on them to try again.',
 					$partial,
-					Plugin::TEXT_DOMAIN
+					'product-unpublisher-for-woocommerce'
 				),
 				$partial
 			);
@@ -122,7 +122,7 @@ final class BulkNotice {
 		if ( $failed ) {
 			$lines[] = sprintf(
 				/* translators: %d: number of products. */
-				_n( '%d product could not be processed.', '%d products could not be processed.', $failed, Plugin::TEXT_DOMAIN ),
+				_n( '%d product could not be processed.', '%d products could not be processed.', $failed, 'product-unpublisher-for-woocommerce' ),
 				$failed
 			);
 		}
@@ -130,7 +130,7 @@ final class BulkNotice {
 		if ( $skipped ) {
 			$lines[] = sprintf(
 				/* translators: %d: number of products. */
-				_n( '%d product was skipped and left unchanged.', '%d products were skipped and left unchanged.', $skipped, Plugin::TEXT_DOMAIN ),
+				_n( '%d product was skipped and left unchanged.', '%d products were skipped and left unchanged.', $skipped, 'product-unpublisher-for-woocommerce' ),
 				$skipped
 			);
 		}
@@ -142,19 +142,19 @@ final class BulkNotice {
 		switch ( $action ) {
 			case BulkAction::SCHEDULE:
 				/* translators: %d: number of products. */
-				return sprintf( _n( 'Unpublishing scheduled for %d product.', 'Unpublishing scheduled for %d products.', $count, Plugin::TEXT_DOMAIN ), $count );
+				return sprintf( _n( 'Unpublishing scheduled for %d product.', 'Unpublishing scheduled for %d products.', $count, 'product-unpublisher-for-woocommerce' ), $count );
 
 			case BulkAction::REMOVE:
 				/* translators: %d: number of products. */
-				return sprintf( _n( 'Scheduled unpublishing removed from %d product.', 'Scheduled unpublishing removed from %d products.', $count, Plugin::TEXT_DOMAIN ), $count );
+				return sprintf( _n( 'Scheduled unpublishing removed from %d product.', 'Scheduled unpublishing removed from %d products.', $count, 'product-unpublisher-for-woocommerce' ), $count );
 
 			case BulkAction::UNPUBLISH_NOW:
 				/* translators: %d: number of products. */
-				return sprintf( _n( '%d product unpublished and moved to Draft.', '%d products unpublished and moved to Draft.', $count, Plugin::TEXT_DOMAIN ), $count );
+				return sprintf( _n( '%d product unpublished and moved to Draft.', '%d products unpublished and moved to Draft.', $count, 'product-unpublisher-for-woocommerce' ), $count );
 		}
 
 		/* translators: %d: number of products. */
-		return sprintf( _n( '%d product processed successfully.', '%d products processed successfully.', $count, Plugin::TEXT_DOMAIN ), $count );
+		return sprintf( _n( '%d product processed successfully.', '%d products processed successfully.', $count, 'product-unpublisher-for-woocommerce' ), $count );
 	}
 
 	/**
@@ -170,12 +170,12 @@ final class BulkNotice {
 
 			if ( '' === $title ) {
 				/* translators: %d: product ID. */
-				$title = sprintf( __( 'Product #%d', Plugin::TEXT_DOMAIN ), $entry->product_id );
+				$title = sprintf( __( 'Product #%d', 'product-unpublisher-for-woocommerce' ), $entry->product_id );
 			}
 
 			$items[] = sprintf(
 				/* translators: 1: product name, 2: reason. */
-				__( '%1$s: %2$s', Plugin::TEXT_DOMAIN ),
+				__( '%1$s: %2$s', 'product-unpublisher-for-woocommerce' ),
 				$title,
 				$this->reason_label( $entry->reason )
 			);
@@ -186,19 +186,19 @@ final class BulkNotice {
 
 	public function reason_label( string $reason ): string {
 		$labels = array(
-			'not_published'       => __( 'not published', Plugin::TEXT_DOMAIN ),
-			'no_schedule'         => __( 'no schedule to remove', Plugin::TEXT_DOMAIN ),
-			'invalid_date'        => __( 'the date was invalid', Plugin::TEXT_DOMAIN ),
-			'past_date'           => __( 'the date was not in the future', Plugin::TEXT_DOMAIN ),
-			'schedule_failed'     => __( 'the schedule could not be registered; the previous schedule was kept where possible', Plugin::TEXT_DOMAIN ),
-			'remove_failed'       => __( 'the schedule could not be completely removed', Plugin::TEXT_DOMAIN ),
-			'cleanup_failed'      => __( 'moved to Draft, but schedule cleanup failed', Plugin::TEXT_DOMAIN ),
-			'no_permission'       => __( 'you are not allowed to edit this product', Plugin::TEXT_DOMAIN ),
-			'not_found'           => __( 'product not found', Plugin::TEXT_DOMAIN ),
-			'update_error'        => __( 'WordPress could not update the product', Plugin::TEXT_DOMAIN ),
-			'status_not_changed'  => __( 'the status did not change', Plugin::TEXT_DOMAIN ),
+			'not_published'       => __( 'not published', 'product-unpublisher-for-woocommerce' ),
+			'no_schedule'         => __( 'no schedule to remove', 'product-unpublisher-for-woocommerce' ),
+			'invalid_date'        => __( 'the date was invalid', 'product-unpublisher-for-woocommerce' ),
+			'past_date'           => __( 'the date was not in the future', 'product-unpublisher-for-woocommerce' ),
+			'schedule_failed'     => __( 'the schedule could not be registered; the previous schedule was kept where possible', 'product-unpublisher-for-woocommerce' ),
+			'remove_failed'       => __( 'the schedule could not be completely removed', 'product-unpublisher-for-woocommerce' ),
+			'cleanup_failed'      => __( 'moved to Draft, but schedule cleanup failed', 'product-unpublisher-for-woocommerce' ),
+			'no_permission'       => __( 'you are not allowed to edit this product', 'product-unpublisher-for-woocommerce' ),
+			'not_found'           => __( 'product not found', 'product-unpublisher-for-woocommerce' ),
+			'update_error'        => __( 'WordPress could not update the product', 'product-unpublisher-for-woocommerce' ),
+			'status_not_changed'  => __( 'the status did not change', 'product-unpublisher-for-woocommerce' ),
 		);
 
-		return $labels[ $reason ] ?? __( 'unexpected error', Plugin::TEXT_DOMAIN );
+		return $labels[ $reason ] ?? __( 'unexpected error', 'product-unpublisher-for-woocommerce' );
 	}
 }
