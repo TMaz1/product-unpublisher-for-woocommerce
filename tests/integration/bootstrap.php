@@ -23,9 +23,9 @@ tests_add_filter(
 	'muplugins_loaded',
 	static function (): void {
 		define( 'WPU_VERSION', '2.1.0' );
-		define( 'WPU_FILE', dirname( __DIR__, 2 ) . '/woocommerce-product-unpublisher.php' );
+		define( 'WPU_FILE', dirname( __DIR__, 2 ) . '/product-unpublisher-for-woocommerce.php' );
 		define( 'WPU_PATH', dirname( __DIR__, 2 ) . '/' );
-		define( 'WPU_URL', 'http://example.org/wp-content/plugins/woocommerce-product-unpublisher/' );
+		define( 'WPU_URL', 'http://example.org/wp-content/plugins/product-unpublisher-for-woocommerce/' );
 
 		require_once WPU_PATH . 'src/autoload.php';
 	}

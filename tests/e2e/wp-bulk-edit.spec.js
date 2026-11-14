@@ -8,7 +8,7 @@ const { wp, createProduct, status, scheduledMeta, cronEvents, login } = require(
 const LIST = '/wp-admin/edit.php?post_type=product';
 
 async function openBulkEdit(page, ids) {
-	await page.goto(LIST + '&post_status=all');
+	await page.goto(LIST + '&post_status=all', { waitUntil: 'domcontentloaded' });
 	for (const id of ids) {
 		await page.check(`#cb-select-${id}`);
 	}
@@ -18,9 +18,30 @@ async function openBulkEdit(page, ids) {
 }
 
 test.describe('Bulk scheduled unpublishing', () => {
+	test.beforeAll(() => {
+		wp(['plugin', 'activate', '--all']);
+	});
+
+
 	test.beforeEach(async ({ page }) => {
 		await login(page);
 	});
+
+	// const AUTH_FILE = 'test-results/.auth/admin.json';
+
+	// test.use({ storageState: AUTH_FILE });
+
+	// test.beforeAll(async ({ browser }) => {
+	// 	const context = await browser.newContext();
+	// 	const page = await context.newPage();
+	// 	await page.goto('/wp-login.php', { waitUntil: 'domcontentloaded' });
+	// 	await page.fill('#user_login', 'admin');
+	// 	await page.fill('#user_pass', 'password');
+	// 	await page.click('#wp-submit');
+	// 	await page.waitForURL('**/wp-admin/**');
+	// 	await context.storageState({ path: AUTH_FILE });
+	// 	await context.close();
+	// });
 
 	test('the date fields only appear for "Schedule unpublishing"', async ({ page }) => {
 		const id = createProduct('E2E toggle');
