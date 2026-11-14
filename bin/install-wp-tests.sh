@@ -27,9 +27,13 @@ download() {
 	fi
 }
 
-if [[ $WP_VERSION == 'latest' || $WP_VERSION == 'nightly' ]]; then
+if [[ $WP_VERSION == 'nightly' ]]; then
 	WP_TESTS_TAG="trunk"
-	WP_ARCHIVE="https://wordpress.org/latest.tar.gz"
+	WP_ARCHIVE="https://wordpress.org"
+elif [[ $WP_VERSION == 'latest' ]]; then
+	LATEST_VERSION=$(curl -fsSL "https://wordpress.org" | grep -o '"current":"[^"]*"' | head -n1 | cut -d'"' -f4)
+	WP_TESTS_TAG="tags/$LATEST_VERSION"
+	WP_ARCHIVE="https://wordpress.org"
 else
 	WP_TESTS_TAG="tags/$WP_VERSION"
 	WP_ARCHIVE="https://wordpress.org/wordpress-$WP_VERSION.tar.gz"
