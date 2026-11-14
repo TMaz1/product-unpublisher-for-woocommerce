@@ -41,8 +41,13 @@ fi
 
 mkdir -p "$WP_CORE_DIR"
 if [ ! -f "$WP_CORE_DIR/wp-settings.php" ]; then
-	download "$WP_ARCHIVE" "$TMPDIR/wordpress.tar.gz"
-	tar --strip-components=1 -zxmf "$TMPDIR/wordpress.tar.gz" -C "$WP_CORE_DIR"
+	if [[ $WP_VERSION == 'nightly' ]]; then
+		download "$WP_ARCHIVE" "$TMPDIR/wordpress.zip"
+		unzip -q "$TMPDIR/wordpress.zip" -d "$TMPDIR"
+	else
+		download "$WP_ARCHIVE" "$TMPDIR/wordpress.tar.gz"
+		tar --strip-components=1 -zxmf "$TMPDIR/wordpress.tar.gz" -C "$WP_CORE_DIR"
+	fi
 fi
 
 download https://raw.githubusercontent.com/markoheijnen/wp-mysqli/master/db.php "$WP_CORE_DIR/wp-content/db.php" || true
