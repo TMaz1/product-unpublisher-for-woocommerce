@@ -18,6 +18,7 @@ TMPDIR=${TMPDIR-/tmp}
 TMPDIR=$(echo "$TMPDIR" | sed -e "s/\/$//")
 WP_TESTS_DIR=${WP_TESTS_DIR-$TMPDIR/wordpress-tests-lib}
 WP_CORE_DIR=${WP_CORE_DIR-$TMPDIR/wordpress/}
+WP_HOST="wordpress.org"
 
 download() {
 	if command -v curl >/dev/null 2>&1; then
@@ -29,22 +30,22 @@ download() {
 
 if [[ $WP_VERSION == 'nightly' ]]; then
 	WP_TESTS_TAG="trunk"
-	WP_ARCHIVE="https://wordpress.org"
+	WP_ARCHIVE="https://${WP_HOST}/nightly-builds/wordpress-latest.zip"
 elif [[ $WP_VERSION == 'latest' ]]; then
-	LATEST_VERSION=$(php -r '$data = json_decode(file_get_contents("https://wordpress.org"), true); echo $data["offers"]["current"] ?? "";')
+	LATEST_VERSION=$(php -r '$data = json_decode(file_get_contents("https://api.'"${WP_HOST}"'/core/version-check/1.7/"), true); echo $data["offers"]["current"] ?? "";')
 	if [ -z "$LATEST_VERSION" ]; then
 		echo "Failed to determine latest WordPress version"
 		exit 1
 	fi
-	if svn ls "https://wordpress.org" >/dev/null 2>&1; then
+	if svn ls "https://develop.svn.${WP_HOST}/tags/$LATEST_VERSION" >/dev/null 2>&1; then
 		WP_TESTS_TAG="tags/$LATEST_VERSION"
 	else
 		WP_TESTS_TAG="tags/${LATEST_VERSION}.0"
 	fi
-	WP_ARCHIVE="https://wordpress.org"
+	WP_ARCHIVE="https://${WP_HOST}/latest.tar.gz"
 else
 	WP_TESTS_TAG="tags/$WP_VERSION"
-	WP_ARCHIVE="https://wordpress.org"
+	WP_ARCHIVE="https://${WP_HOST}/wordpress-${WP_VERSION}.tar.gz"
 fi
 
 mkdir -p "$WP_CORE_DIR"
